@@ -19,9 +19,8 @@ public class NetworkManager
 	{
 		// DNS (Domain Name System)
 		string host = Dns.GetHostName();
-		IPHostEntry ipHost = Dns.GetHostEntry(host);
-		IPAddress ipAddr = ipHost.AddressList[0];
-		IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
+		IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
+        IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
 		Connector connector = new Connector();
 
@@ -35,7 +34,7 @@ public class NetworkManager
 		List<PacketMessage> list = PacketQueue.Instance.PopAll();
 		foreach (PacketMessage packet in list)
 		{
-			Action<PacketSession, IMessage> handler = PacketManager.Instance.GetPacketHandler(packet.Id);
+			Action<PacketSession, IMessage> handler = UnityPacketHandler.Instance.GetPacketHandler(packet.Id);
 			if (handler != null)
 				handler.Invoke(_session, packet.Message);
 		}	
