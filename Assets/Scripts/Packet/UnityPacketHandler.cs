@@ -13,7 +13,9 @@ public class UnityPacketHandler : AutoServerPacketHandler
 
     public override void Handle_S_DESPAWN(PacketSession session, IMessage packet)
     {
+        ServerSession serverSession = session as ServerSession;
         var pkt = packet as S_DESPAWN;
+        
     }
 
     public override void Handle_S_ENTER_GAME(PacketSession session, IMessage packet)
