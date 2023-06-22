@@ -24,32 +24,34 @@ namespace Protocol {
     static StructReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvImgKBlBsYXll",
-            "chIKCgJpZBgBIAEoBBIMCgRuYW1lGAIgASgJEigKCnBsYXllclR5cGUYAyAB",
-            "KA4yFC5Qcm90b2NvbC5QbGF5ZXJUeXBlEg0KBWxldmVsGAQgASgNEgsKA2V4",
-            "cBgFIAEoDSJKCgpQbGF5ZXJJbmZvEiAKBnBsYXllchgBIAEoCzIQLlByb3Rv",
-            "Y29sLlBsYXllchIMCgRwb3NYGAIgASgFEgwKBHBvc1kYAyABKAViBnByb3Rv",
-            "Mw=="));
+            "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvIlIKCFVzZXJE",
+            "YXRhEg8KB3VzZXJVSUQYASABKAQSJAoIYXV0aFR5cGUYAiABKA4yEi5Qcm90",
+            "b2NvbC5BdXRoVHlwZRIPCgdhdXRoS2V5GAMgASgJIlEKC0FjY291bnREYXRh",
+            "Eg8KB3VzZXJVSUQYASABKAQSEgoKYWNjb3VudFVJRBgCIAEoDRIQCghuaWNr",
+            "TmFtZRgDIAEoCRILCgNleHAYBCABKA0iVAoKUGxheWVySW5mbxIqCgthY2Nv",
+            "dW50RGF0YRgBIAEoCzIVLlByb3RvY29sLkFjY291bnREYXRhEgwKBHBvc1gY",
+            "AiABKAUSDAoEcG9zWRgDIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.Player), global::Protocol.Player.Parser, new[]{ "Id", "Name", "PlayerType", "Level", "Exp" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.PlayerInfo), global::Protocol.PlayerInfo.Parser, new[]{ "Player", "PosX", "PosY" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.UserData), global::Protocol.UserData.Parser, new[]{ "UserUID", "AuthType", "AuthKey" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.AccountData), global::Protocol.AccountData.Parser, new[]{ "UserUID", "AccountUID", "NickName", "Exp" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.PlayerInfo), global::Protocol.PlayerInfo.Parser, new[]{ "AccountData", "PosX", "PosY" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class Player : pb::IMessage<Player>
+  public sealed partial class UserData : pb::IMessage<UserData>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Player> _parser = new pb::MessageParser<Player>(() => new Player());
+    private static readonly pb::MessageParser<UserData> _parser = new pb::MessageParser<UserData>(() => new UserData());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Player> Parser { get { return _parser; } }
+    public static pb::MessageParser<UserData> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -62,73 +64,305 @@ namespace Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Player() {
+    public UserData() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Player(Player other) : this() {
-      id_ = other.id_;
-      name_ = other.name_;
-      playerType_ = other.playerType_;
-      level_ = other.level_;
+    public UserData(UserData other) : this() {
+      userUID_ = other.userUID_;
+      authType_ = other.authType_;
+      authKey_ = other.authKey_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UserData Clone() {
+      return new UserData(this);
+    }
+
+    /// <summary>Field number for the "userUID" field.</summary>
+    public const int UserUIDFieldNumber = 1;
+    private ulong userUID_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ulong UserUID {
+      get { return userUID_; }
+      set {
+        userUID_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "authType" field.</summary>
+    public const int AuthTypeFieldNumber = 2;
+    private global::Protocol.AuthType authType_ = global::Protocol.AuthType.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Protocol.AuthType AuthType {
+      get { return authType_; }
+      set {
+        authType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "authKey" field.</summary>
+    public const int AuthKeyFieldNumber = 3;
+    private string authKey_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string AuthKey {
+      get { return authKey_; }
+      set {
+        authKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UserData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UserData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (UserUID != other.UserUID) return false;
+      if (AuthType != other.AuthType) return false;
+      if (AuthKey != other.AuthKey) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (UserUID != 0UL) hash ^= UserUID.GetHashCode();
+      if (AuthType != global::Protocol.AuthType.None) hash ^= AuthType.GetHashCode();
+      if (AuthKey.Length != 0) hash ^= AuthKey.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (UserUID != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(UserUID);
+      }
+      if (AuthType != global::Protocol.AuthType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) AuthType);
+      }
+      if (AuthKey.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(AuthKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (UserUID != 0UL) {
+        output.WriteRawTag(8);
+        output.WriteUInt64(UserUID);
+      }
+      if (AuthType != global::Protocol.AuthType.None) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) AuthType);
+      }
+      if (AuthKey.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(AuthKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (UserUID != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UserUID);
+      }
+      if (AuthType != global::Protocol.AuthType.None) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) AuthType);
+      }
+      if (AuthKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AuthKey);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UserData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UserUID != 0UL) {
+        UserUID = other.UserUID;
+      }
+      if (other.AuthType != global::Protocol.AuthType.None) {
+        AuthType = other.AuthType;
+      }
+      if (other.AuthKey.Length != 0) {
+        AuthKey = other.AuthKey;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            UserUID = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            AuthType = (global::Protocol.AuthType) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            AuthKey = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            UserUID = input.ReadUInt64();
+            break;
+          }
+          case 16: {
+            AuthType = (global::Protocol.AuthType) input.ReadEnum();
+            break;
+          }
+          case 26: {
+            AuthKey = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class AccountData : pb::IMessage<AccountData>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<AccountData> _parser = new pb::MessageParser<AccountData>(() => new AccountData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AccountData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Protocol.StructReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AccountData(AccountData other) : this() {
+      userUID_ = other.userUID_;
+      accountUID_ = other.accountUID_;
+      nickName_ = other.nickName_;
       exp_ = other.exp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Player Clone() {
-      return new Player(this);
+    public AccountData Clone() {
+      return new AccountData(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private ulong id_;
+    /// <summary>Field number for the "userUID" field.</summary>
+    public const int UserUIDFieldNumber = 1;
+    private ulong userUID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ulong Id {
-      get { return id_; }
+    public ulong UserUID {
+      get { return userUID_; }
       set {
-        id_ = value;
+        userUID_ = value;
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
+    /// <summary>Field number for the "accountUID" field.</summary>
+    public const int AccountUIDFieldNumber = 2;
+    private uint accountUID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    public uint AccountUID {
+      get { return accountUID_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        accountUID_ = value;
       }
     }
 
-    /// <summary>Field number for the "playerType" field.</summary>
-    public const int PlayerTypeFieldNumber = 3;
-    private global::Protocol.PlayerType playerType_ = global::Protocol.PlayerType.None;
+    /// <summary>Field number for the "nickName" field.</summary>
+    public const int NickNameFieldNumber = 3;
+    private string nickName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Protocol.PlayerType PlayerType {
-      get { return playerType_; }
+    public string NickName {
+      get { return nickName_; }
       set {
-        playerType_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "level" field.</summary>
-    public const int LevelFieldNumber = 4;
-    private uint level_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public uint Level {
-      get { return level_; }
-      set {
-        level_ = value;
+        nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "exp" field.</summary>
-    public const int ExpFieldNumber = 5;
+    public const int ExpFieldNumber = 4;
     private uint exp_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Exp {
@@ -140,21 +374,20 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Player);
+      return Equals(other as AccountData);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Player other) {
+    public bool Equals(AccountData other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
-      if (Name != other.Name) return false;
-      if (PlayerType != other.PlayerType) return false;
-      if (Level != other.Level) return false;
+      if (UserUID != other.UserUID) return false;
+      if (AccountUID != other.AccountUID) return false;
+      if (NickName != other.NickName) return false;
       if (Exp != other.Exp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -162,10 +395,9 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id != 0UL) hash ^= Id.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (PlayerType != global::Protocol.PlayerType.None) hash ^= PlayerType.GetHashCode();
-      if (Level != 0) hash ^= Level.GetHashCode();
+      if (UserUID != 0UL) hash ^= UserUID.GetHashCode();
+      if (AccountUID != 0) hash ^= AccountUID.GetHashCode();
+      if (NickName.Length != 0) hash ^= NickName.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -183,24 +415,20 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id != 0UL) {
+      if (UserUID != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(Id);
+        output.WriteUInt64(UserUID);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
+      if (AccountUID != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(AccountUID);
       }
-      if (PlayerType != global::Protocol.PlayerType.None) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) PlayerType);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Level);
+      if (NickName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(NickName);
       }
       if (Exp != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
@@ -212,24 +440,20 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id != 0UL) {
+      if (UserUID != 0UL) {
         output.WriteRawTag(8);
-        output.WriteUInt64(Id);
+        output.WriteUInt64(UserUID);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
+      if (AccountUID != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(AccountUID);
       }
-      if (PlayerType != global::Protocol.PlayerType.None) {
-        output.WriteRawTag(24);
-        output.WriteEnum((int) PlayerType);
-      }
-      if (Level != 0) {
-        output.WriteRawTag(32);
-        output.WriteUInt32(Level);
+      if (NickName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(NickName);
       }
       if (Exp != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteUInt32(Exp);
       }
       if (_unknownFields != null) {
@@ -241,17 +465,14 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Id != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Id);
+      if (UserUID != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(UserUID);
       }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (AccountUID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountUID);
       }
-      if (PlayerType != global::Protocol.PlayerType.None) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PlayerType);
-      }
-      if (Level != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Level);
+      if (NickName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
       }
       if (Exp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Exp);
@@ -263,21 +484,18 @@ namespace Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Player other) {
+    public void MergeFrom(AccountData other) {
       if (other == null) {
         return;
       }
-      if (other.Id != 0UL) {
-        Id = other.Id;
+      if (other.UserUID != 0UL) {
+        UserUID = other.UserUID;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.AccountUID != 0) {
+        AccountUID = other.AccountUID;
       }
-      if (other.PlayerType != global::Protocol.PlayerType.None) {
-        PlayerType = other.PlayerType;
-      }
-      if (other.Level != 0) {
-        Level = other.Level;
+      if (other.NickName.Length != 0) {
+        NickName = other.NickName;
       }
       if (other.Exp != 0) {
         Exp = other.Exp;
@@ -297,22 +515,18 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Id = input.ReadUInt64();
+            UserUID = input.ReadUInt64();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
+          case 16: {
+            AccountUID = input.ReadUInt32();
             break;
           }
-          case 24: {
-            PlayerType = (global::Protocol.PlayerType) input.ReadEnum();
+          case 26: {
+            NickName = input.ReadString();
             break;
           }
           case 32: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 40: {
             Exp = input.ReadUInt32();
             break;
           }
@@ -331,22 +545,18 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Id = input.ReadUInt64();
+            UserUID = input.ReadUInt64();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
+          case 16: {
+            AccountUID = input.ReadUInt32();
             break;
           }
-          case 24: {
-            PlayerType = (global::Protocol.PlayerType) input.ReadEnum();
+          case 26: {
+            NickName = input.ReadString();
             break;
           }
           case 32: {
-            Level = input.ReadUInt32();
-            break;
-          }
-          case 40: {
             Exp = input.ReadUInt32();
             break;
           }
@@ -369,7 +579,7 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Protocol.StructReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Protocol.StructReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -386,7 +596,7 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PlayerInfo(PlayerInfo other) : this() {
-      player_ = other.player_ != null ? other.player_.Clone() : null;
+      accountData_ = other.accountData_ != null ? other.accountData_.Clone() : null;
       posX_ = other.posX_;
       posY_ = other.posY_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -397,14 +607,14 @@ namespace Protocol {
       return new PlayerInfo(this);
     }
 
-    /// <summary>Field number for the "player" field.</summary>
-    public const int PlayerFieldNumber = 1;
-    private global::Protocol.Player player_;
+    /// <summary>Field number for the "accountData" field.</summary>
+    public const int AccountDataFieldNumber = 1;
+    private global::Protocol.AccountData accountData_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Protocol.Player Player {
-      get { return player_; }
+    public global::Protocol.AccountData AccountData {
+      get { return accountData_; }
       set {
-        player_ = value;
+        accountData_ = value;
       }
     }
 
@@ -443,7 +653,7 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Player, other.Player)) return false;
+      if (!object.Equals(AccountData, other.AccountData)) return false;
       if (PosX != other.PosX) return false;
       if (PosY != other.PosY) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -452,7 +662,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (player_ != null) hash ^= Player.GetHashCode();
+      if (accountData_ != null) hash ^= AccountData.GetHashCode();
       if (PosX != 0) hash ^= PosX.GetHashCode();
       if (PosY != 0) hash ^= PosY.GetHashCode();
       if (_unknownFields != null) {
@@ -471,9 +681,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (player_ != null) {
+      if (accountData_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Player);
+        output.WriteMessage(AccountData);
       }
       if (PosX != 0) {
         output.WriteRawTag(16);
@@ -492,9 +702,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (player_ != null) {
+      if (accountData_ != null) {
         output.WriteRawTag(10);
-        output.WriteMessage(Player);
+        output.WriteMessage(AccountData);
       }
       if (PosX != 0) {
         output.WriteRawTag(16);
@@ -513,8 +723,8 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (player_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Player);
+      if (accountData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AccountData);
       }
       if (PosX != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PosX);
@@ -533,11 +743,11 @@ namespace Protocol {
       if (other == null) {
         return;
       }
-      if (other.player_ != null) {
-        if (player_ == null) {
-          Player = new global::Protocol.Player();
+      if (other.accountData_ != null) {
+        if (accountData_ == null) {
+          AccountData = new global::Protocol.AccountData();
         }
-        Player.MergeFrom(other.Player);
+        AccountData.MergeFrom(other.AccountData);
       }
       if (other.PosX != 0) {
         PosX = other.PosX;
@@ -560,10 +770,10 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (player_ == null) {
-              Player = new global::Protocol.Player();
+            if (accountData_ == null) {
+              AccountData = new global::Protocol.AccountData();
             }
-            input.ReadMessage(Player);
+            input.ReadMessage(AccountData);
             break;
           }
           case 16: {
@@ -589,10 +799,10 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (player_ == null) {
-              Player = new global::Protocol.Player();
+            if (accountData_ == null) {
+              AccountData = new global::Protocol.AccountData();
             }
-            input.ReadMessage(Player);
+            input.ReadMessage(AccountData);
             break;
           }
           case 16: {

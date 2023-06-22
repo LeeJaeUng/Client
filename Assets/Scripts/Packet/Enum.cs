@@ -24,18 +24,28 @@ namespace Protocol {
     static EnumReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgpFbnVtLnByb3RvEghQcm90b2NvbCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlF",
-            "Ul9UWVBFX05PTkUQABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZ",
-            "RVJfVFlQRV9NQUdFEAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEANiBnByb3Rv",
-            "Mw=="));
+            "CgpFbnVtLnByb3RvEghQcm90b2NvbCp5CghBdXRoVHlwZRISCg5BVVRIX1RZ",
+            "UEVfTk9ORRAAEhYKEkFVVEhfVFlQRV9XT09OR0xFRRABEhQKEEFVVEhfVFlQ",
+            "RV9HT09HTEUQAhIWChJBVVRIX1RZUEVfRkFDRUJPT0sQAxITCg9BVVRIX1RZ",
+            "UEVfQVBQTEUQBCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlFUl9UWVBFX05PTkUQ",
+            "ABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZRVJfVFlQRV9NQUdF",
+            "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEANiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.PlayerType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), }, null, null));
     }
     #endregion
 
   }
   #region Enums
+  public enum AuthType {
+    [pbr::OriginalName("AUTH_TYPE_NONE")] None = 0,
+    [pbr::OriginalName("AUTH_TYPE_WOONGLEE")] Woonglee = 1,
+    [pbr::OriginalName("AUTH_TYPE_GOOGLE")] Google = 2,
+    [pbr::OriginalName("AUTH_TYPE_FACEBOOK")] Facebook = 3,
+    [pbr::OriginalName("AUTH_TYPE_APPLE")] Apple = 4,
+  }
+
   public enum PlayerType {
     [pbr::OriginalName("PLAYER_TYPE_NONE")] None = 0,
     [pbr::OriginalName("PLAYER_TYPE_KNIGHT")] Knight = 1,
