@@ -6,6 +6,7 @@ using static Define;
 
 public class CreatureController : MonoBehaviour
 {
+	public uint id { get; set; } = 0;
 	[SerializeField]
 	public float _speed = 5.0f;
 

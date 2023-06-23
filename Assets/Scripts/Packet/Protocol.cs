@@ -26,21 +26,21 @@ namespace Protocol {
           string.Concat(
             "Cg5Qcm90b2NvbC5wcm90bxIIUHJvdG9jb2waCkVudW0ucHJvdG8aDFN0cnVj",
             "dC5wcm90byI4CgxTX0VOVEVSX0dBTUUSKAoKcGxheWVySW5mbxgBIAEoCzIU",
-            "LlByb3RvY29sLlBsYXllckluZm8iIAoMU19MRUFWRV9HQU1FEhAKCHBsYXll",
-            "cklEGAEgASgFIjsKDlNfU1BBV05fUExBWUVSEikKC3BsYXllckluZm9zGAEg",
-            "AygLMhQuUHJvdG9jb2wuUGxheWVySW5mbyIeCglTX0RFU1BBV04SEQoJcGxh",
-            "eWVySURzGAEgAygFIiQKBkNfTU9WRRIMCgRwb3NYGAEgASgFEgwKBHBvc1kY",
-            "AiABKAUiNgoGU19NT1ZFEhAKCHBsYXllcklEGAEgASgFEgwKBHBvc1gYAiAB",
-            "KAUSDAoEcG9zWRgDIAEoBWIGcHJvdG8z"));
+            "LlByb3RvY29sLlBsYXllckluZm8iIgoMU19MRUFWRV9HQU1FEhIKCmFjY291",
+            "bnRVSUQYASABKA0iOwoOU19TUEFXTl9QTEFZRVISKQoLcGxheWVySW5mb3MY",
+            "ASADKAsyFC5Qcm90b2NvbC5QbGF5ZXJJbmZvIiAKCVNfREVTUEFXThITCgth",
+            "Y2NvdW50VUlEcxgBIAMoDSIkCgZDX01PVkUSDAoEcG9zWBgBIAEoBRIMCgRw",
+            "b3NZGAIgASgFIjgKBlNfTU9WRRISCgphY2NvdW50VUlEGAEgASgNEgwKBHBv",
+            "c1gYAiABKAUSDAoEcG9zWRgDIAEoBWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_ENTER_GAME), global::Protocol.S_ENTER_GAME.Parser, new[]{ "PlayerInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_LEAVE_GAME), global::Protocol.S_LEAVE_GAME.Parser, new[]{ "PlayerID" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_LEAVE_GAME), global::Protocol.S_LEAVE_GAME.Parser, new[]{ "AccountUID" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_SPAWN_PLAYER), global::Protocol.S_SPAWN_PLAYER.Parser, new[]{ "PlayerInfos" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_DESPAWN), global::Protocol.S_DESPAWN.Parser, new[]{ "PlayerIDs" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_DESPAWN), global::Protocol.S_DESPAWN.Parser, new[]{ "AccountUIDs" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.C_MOVE), global::Protocol.C_MOVE.Parser, new[]{ "PosX", "PosY" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_MOVE), global::Protocol.S_MOVE.Parser, new[]{ "PlayerID", "PosX", "PosY" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_MOVE), global::Protocol.S_MOVE.Parser, new[]{ "AccountUID", "PosX", "PosY" }, null, null, null, null)
           }));
     }
     #endregion
@@ -257,7 +257,7 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_LEAVE_GAME(S_LEAVE_GAME other) : this() {
-      playerID_ = other.playerID_;
+      accountUID_ = other.accountUID_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -266,14 +266,14 @@ namespace Protocol {
       return new S_LEAVE_GAME(this);
     }
 
-    /// <summary>Field number for the "playerID" field.</summary>
-    public const int PlayerIDFieldNumber = 1;
-    private int playerID_;
+    /// <summary>Field number for the "accountUID" field.</summary>
+    public const int AccountUIDFieldNumber = 1;
+    private uint accountUID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PlayerID {
-      get { return playerID_; }
+    public uint AccountUID {
+      get { return accountUID_; }
       set {
-        playerID_ = value;
+        accountUID_ = value;
       }
     }
 
@@ -290,14 +290,14 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerID != other.PlayerID) return false;
+      if (AccountUID != other.AccountUID) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerID != 0) hash ^= PlayerID.GetHashCode();
+      if (AccountUID != 0) hash ^= AccountUID.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -314,9 +314,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerID != 0) {
+      if (AccountUID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(PlayerID);
+        output.WriteUInt32(AccountUID);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -327,9 +327,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerID != 0) {
+      if (AccountUID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(PlayerID);
+        output.WriteUInt32(AccountUID);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -340,8 +340,8 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerID != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerID);
+      if (AccountUID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountUID);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -354,8 +354,8 @@ namespace Protocol {
       if (other == null) {
         return;
       }
-      if (other.PlayerID != 0) {
-        PlayerID = other.PlayerID;
+      if (other.AccountUID != 0) {
+        AccountUID = other.AccountUID;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -372,7 +372,7 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PlayerID = input.ReadInt32();
+            AccountUID = input.ReadUInt32();
             break;
           }
         }
@@ -390,7 +390,7 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PlayerID = input.ReadInt32();
+            AccountUID = input.ReadUInt32();
             break;
           }
         }
@@ -590,7 +590,7 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_DESPAWN(S_DESPAWN other) : this() {
-      playerIDs_ = other.playerIDs_.Clone();
+      accountUIDs_ = other.accountUIDs_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -599,14 +599,14 @@ namespace Protocol {
       return new S_DESPAWN(this);
     }
 
-    /// <summary>Field number for the "playerIDs" field.</summary>
-    public const int PlayerIDsFieldNumber = 1;
-    private static readonly pb::FieldCodec<int> _repeated_playerIDs_codec
-        = pb::FieldCodec.ForInt32(10);
-    private readonly pbc::RepeatedField<int> playerIDs_ = new pbc::RepeatedField<int>();
+    /// <summary>Field number for the "accountUIDs" field.</summary>
+    public const int AccountUIDsFieldNumber = 1;
+    private static readonly pb::FieldCodec<uint> _repeated_accountUIDs_codec
+        = pb::FieldCodec.ForUInt32(10);
+    private readonly pbc::RepeatedField<uint> accountUIDs_ = new pbc::RepeatedField<uint>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> PlayerIDs {
-      get { return playerIDs_; }
+    public pbc::RepeatedField<uint> AccountUIDs {
+      get { return accountUIDs_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -622,14 +622,14 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!playerIDs_.Equals(other.playerIDs_)) return false;
+      if(!accountUIDs_.Equals(other.accountUIDs_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= playerIDs_.GetHashCode();
+      hash ^= accountUIDs_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -646,7 +646,7 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      playerIDs_.WriteTo(output, _repeated_playerIDs_codec);
+      accountUIDs_.WriteTo(output, _repeated_accountUIDs_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -656,7 +656,7 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      playerIDs_.WriteTo(ref output, _repeated_playerIDs_codec);
+      accountUIDs_.WriteTo(ref output, _repeated_accountUIDs_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -666,7 +666,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += playerIDs_.CalculateSize(_repeated_playerIDs_codec);
+      size += accountUIDs_.CalculateSize(_repeated_accountUIDs_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -678,7 +678,7 @@ namespace Protocol {
       if (other == null) {
         return;
       }
-      playerIDs_.Add(other.playerIDs_);
+      accountUIDs_.Add(other.accountUIDs_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -695,7 +695,7 @@ namespace Protocol {
             break;
           case 10:
           case 8: {
-            playerIDs_.AddEntriesFrom(input, _repeated_playerIDs_codec);
+            accountUIDs_.AddEntriesFrom(input, _repeated_accountUIDs_codec);
             break;
           }
         }
@@ -714,7 +714,7 @@ namespace Protocol {
             break;
           case 10:
           case 8: {
-            playerIDs_.AddEntriesFrom(ref input, _repeated_playerIDs_codec);
+            accountUIDs_.AddEntriesFrom(ref input, _repeated_accountUIDs_codec);
             break;
           }
         }
@@ -961,7 +961,7 @@ namespace Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_MOVE(S_MOVE other) : this() {
-      playerID_ = other.playerID_;
+      accountUID_ = other.accountUID_;
       posX_ = other.posX_;
       posY_ = other.posY_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -972,14 +972,14 @@ namespace Protocol {
       return new S_MOVE(this);
     }
 
-    /// <summary>Field number for the "playerID" field.</summary>
-    public const int PlayerIDFieldNumber = 1;
-    private int playerID_;
+    /// <summary>Field number for the "accountUID" field.</summary>
+    public const int AccountUIDFieldNumber = 1;
+    private uint accountUID_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int PlayerID {
-      get { return playerID_; }
+    public uint AccountUID {
+      get { return accountUID_; }
       set {
-        playerID_ = value;
+        accountUID_ = value;
       }
     }
 
@@ -1018,7 +1018,7 @@ namespace Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (PlayerID != other.PlayerID) return false;
+      if (AccountUID != other.AccountUID) return false;
       if (PosX != other.PosX) return false;
       if (PosY != other.PosY) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1027,7 +1027,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (PlayerID != 0) hash ^= PlayerID.GetHashCode();
+      if (AccountUID != 0) hash ^= AccountUID.GetHashCode();
       if (PosX != 0) hash ^= PosX.GetHashCode();
       if (PosY != 0) hash ^= PosY.GetHashCode();
       if (_unknownFields != null) {
@@ -1046,9 +1046,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (PlayerID != 0) {
+      if (AccountUID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(PlayerID);
+        output.WriteUInt32(AccountUID);
       }
       if (PosX != 0) {
         output.WriteRawTag(16);
@@ -1067,9 +1067,9 @@ namespace Protocol {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (PlayerID != 0) {
+      if (AccountUID != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(PlayerID);
+        output.WriteUInt32(AccountUID);
       }
       if (PosX != 0) {
         output.WriteRawTag(16);
@@ -1088,8 +1088,8 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (PlayerID != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PlayerID);
+      if (AccountUID != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(AccountUID);
       }
       if (PosX != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(PosX);
@@ -1108,8 +1108,8 @@ namespace Protocol {
       if (other == null) {
         return;
       }
-      if (other.PlayerID != 0) {
-        PlayerID = other.PlayerID;
+      if (other.AccountUID != 0) {
+        AccountUID = other.AccountUID;
       }
       if (other.PosX != 0) {
         PosX = other.PosX;
@@ -1132,7 +1132,7 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            PlayerID = input.ReadInt32();
+            AccountUID = input.ReadUInt32();
             break;
           }
           case 16: {
@@ -1158,7 +1158,7 @@ namespace Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            PlayerID = input.ReadInt32();
+            AccountUID = input.ReadUInt32();
             break;
           }
           case 16: {

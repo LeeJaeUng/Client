@@ -20,6 +20,8 @@ public abstract class AutoServerPacketHandler
 		Register();
 	}
 
+	public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
+
 	Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>> _onRecv = new Dictionary<ushort, Action<PacketSession, ArraySegment<byte>, ushort>>();
 	Dictionary<ushort, Action<PacketSession, IMessage>> _handler = new Dictionary<ushort, Action<PacketSession, IMessage>>();
 	public abstract void Handle_S_ENTER_GAME(PacketSession session, IMessage packet);
@@ -59,8 +61,7 @@ public abstract class AutoServerPacketHandler
 	{
 		T pkt = new T();
 		pkt.MergeFrom(buffer.Array, buffer.Offset + 4, buffer.Count - 4);
-		if (_handler.TryGetValue(id, out var action))
-			action.Invoke(session, pkt);
+		CustomHandler.Invoke(session, pkt, id);
 	}
 
 	public Action<PacketSession, IMessage> GetPacketHandler(ushort id)
