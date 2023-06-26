@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ObjectManager
 {
 	public MyPlayerController MyPlayer { get; set; }
@@ -19,7 +20,7 @@ public class ObjectManager
 
 			MyPlayer = go.GetComponent<MyPlayerController>();
 			MyPlayer.id = info.AccountData.AccountUID;
-			MyPlayer.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
+			MyPlayer.CellPos = new Vector3Int(info.PositionInfo.PosX, info.PositionInfo.PosY, 0);
 		}
 		else
 		{ 
@@ -29,7 +30,7 @@ public class ObjectManager
 
 			PlayerController pc = go.GetComponent<PlayerController>();
 			pc.id = info.AccountData.AccountUID;
-			pc.CellPos = new Vector3Int(info.PosX, info.PosY, 0);
+			pc.CellPos = new Vector3Int(info.PositionInfo.PosX, info.PositionInfo.PosY, 0);
 		}
 	}
 

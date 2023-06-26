@@ -29,10 +29,13 @@ namespace Protocol {
             "RV9HT09HTEUQAhIWChJBVVRIX1RZUEVfRkFDRUJPT0sQAxITCg9BVVRIX1RZ",
             "UEVfQVBQTEUQBCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlFUl9UWVBFX05PTkUQ",
             "ABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZRVJfVFlQRV9NQUdF",
-            "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEANiBnByb3RvMw=="));
+            "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEAMqOgoNQ3JlYXR1cmVTdGF0ZRII",
+            "CgRJZGxlEAASCgoGTW92aW5nEAESCQoFU2tpbGwQAhIICgREZWFkEAMqOgoH",
+            "TW92ZURpchIICgROb25lEAASBgoCVXAQARIICgREb3duEAISCAoETGVmdBAD",
+            "EgkKBVJpZ2h0EARiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), }, null, null));
     }
     #endregion
 
@@ -51,6 +54,21 @@ namespace Protocol {
     [pbr::OriginalName("PLAYER_TYPE_KNIGHT")] Knight = 1,
     [pbr::OriginalName("PLAYER_TYPE_MAGE")] Mage = 2,
     [pbr::OriginalName("PLAYER_TYPE_ARCHER")] Archer = 3,
+  }
+
+  public enum CreatureState {
+    [pbr::OriginalName("Idle")] Idle = 0,
+    [pbr::OriginalName("Moving")] Moving = 1,
+    [pbr::OriginalName("Skill")] Skill = 2,
+    [pbr::OriginalName("Dead")] Dead = 3,
+  }
+
+  public enum MoveDir {
+    [pbr::OriginalName("None")] None = 0,
+    [pbr::OriginalName("Up")] Up = 1,
+    [pbr::OriginalName("Down")] Down = 2,
+    [pbr::OriginalName("Left")] Left = 3,
+    [pbr::OriginalName("Right")] Right = 4,
   }
 
   #endregion

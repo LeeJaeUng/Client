@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using UnityEngine;
+using Protocol;
 using static Define;
 
 public class CreatureController : MonoBehaviour

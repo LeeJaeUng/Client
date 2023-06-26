@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Protocol;
 using static Define;
 
 public class PlayerController : CreatureController

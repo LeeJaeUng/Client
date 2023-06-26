@@ -11,8 +11,8 @@ public abstract class AutoServerPacketHandler
 		PKT_S_LEAVE_GAME = 1001,
 		PKT_S_SPAWN_PLAYER = 1002,
 		PKT_S_DESPAWN = 1003,
-		PKT_C_MOVE = 1004,
-		PKT_S_MOVE = 1005,
+		PKT_S_MOVE = 1004,
+		PKT_C_MOVE = 1005,
 	}
 
 	public AutoServerPacketHandler()
