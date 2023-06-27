@@ -27,10 +27,10 @@ public class MonsterController : CreatureController
 
 	public override CreatureState State
 	{
-		get { return _state; }
+		get { return PosInfo.State; }
 		set
 		{
-			if (_state == value)
+			if (PosInfo.State == value)
 				return;
 
 			base.State = value;

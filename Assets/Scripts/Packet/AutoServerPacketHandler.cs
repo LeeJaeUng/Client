@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public abstract class AutoServerPacketHandler
 {
-	enum MsgId
+	public enum MsgId
     {
 		PKT_S_ENTER_GAME = 1000,
 		PKT_S_LEAVE_GAME = 1001,

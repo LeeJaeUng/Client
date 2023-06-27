@@ -49,6 +49,22 @@ public class UnityPacketHandler : AutoServerPacketHandler
     public override void Handle_S_MOVE(PacketSession session, IMessage packet)
     {
         var pkt = packet as S_MOVE;
+
+        var go = Managers.Object.FindById(pkt.AccountUID);
+
+        if (go == null)
+        {
+            return;
+        }
+
+        var cc = go.GetComponent<CreatureController>();
+        if(cc== null)
+        {
+            return;
+        }
+
+        cc.PosInfo = pkt.PositionInfo;
+
     }
 
  

@@ -20,18 +20,19 @@ public class ObjectManager
 
 			MyPlayer = go.GetComponent<MyPlayerController>();
 			MyPlayer.id = info.AccountData.AccountUID;
-			MyPlayer.CellPos = new Vector3Int(info.PositionInfo.PosX, info.PositionInfo.PosY, 0);
-		}
+			MyPlayer.PosInfo = info.PositionInfo;
+
+        }
 		else
 		{ 
 			var go = Managers.Resource.Instantiate("Creature/Player");
 			go.name = info.AccountData.NickName;
 			Add(info.AccountData.AccountUID, go);
 
-			PlayerController pc = go.GetComponent<PlayerController>();
+			var pc = go.GetComponent<PlayerController>();
 			pc.id = info.AccountData.AccountUID;
-			pc.CellPos = new Vector3Int(info.PositionInfo.PosX, info.PositionInfo.PosY, 0);
-		}
+            MyPlayer.PosInfo = info.PositionInfo;
+        }
 	}
 
 	private void Add(uint id, GameObject go)
@@ -53,6 +54,12 @@ public class ObjectManager
 
 		Remove(MyPlayer.id);
 		MyPlayer = null;
+	}
+
+	public GameObject FindById(uint id)
+	{
+		_objects.TryGetValue((uint)id, out var go);
+		return go;
 	}
 
 	public GameObject Find(Vector3 cellPos)

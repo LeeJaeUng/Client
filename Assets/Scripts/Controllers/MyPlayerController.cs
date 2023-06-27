@@ -73,4 +73,19 @@ public class MyPlayerController : PlayerController
         }
     }
 
+    protected override void MoveToNextPos()
+    {
+        CreatureState prevState = State;
+        Vector3Int prevCellPos = CellPos;
+
+        base.MoveToNextPos();
+
+        if (prevState != State || CellPos != prevCellPos)
+        {
+            C_MOVE movePacket = new C_MOVE();
+            movePacket.PositionInfo = PosInfo;
+            Managers.Network.Send(movePacket);
+        }
+    }
+
 }
