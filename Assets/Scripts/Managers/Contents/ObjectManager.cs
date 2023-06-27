@@ -16,10 +16,10 @@ public class ObjectManager
 		{
 			var go =Managers.Resource.Instantiate("Creature/MyPlayer");
 			go.name = info.AccountData.NickName;
-			Add(info.AccountData.AccountUID, go);
+			_objects.Add(info.AccountData.AccountUID, go);
 
 			MyPlayer = go.GetComponent<MyPlayerController>();
-			MyPlayer.id = info.AccountData.AccountUID;
+			MyPlayer.Id = info.AccountData.AccountUID;
 			MyPlayer.PosInfo = info.PositionInfo;
 
         }
@@ -27,22 +27,25 @@ public class ObjectManager
 		{ 
 			var go = Managers.Resource.Instantiate("Creature/Player");
 			go.name = info.AccountData.NickName;
-			Add(info.AccountData.AccountUID, go);
+            _objects.Add(info.AccountData.AccountUID, go);
 
 			var pc = go.GetComponent<PlayerController>();
-			pc.id = info.AccountData.AccountUID;
-            MyPlayer.PosInfo = info.PositionInfo;
+			pc.Id = info.AccountData.AccountUID;
+            pc.PosInfo = info.PositionInfo;
         }
 	}
 
-	private void Add(uint id, GameObject go)
-	{
-		_objects.Add( id, go);
-	}
 
 	public void Remove(uint id)
 	{
+		var go = FindById(id);
+		if(go == null)
+		{
+            return;
+        }
+
 		_objects.Remove(id);
+		Managers.Resource.Destroy(go);
 	}
 
 	public void RemoveMyPlayer()
@@ -52,7 +55,7 @@ public class ObjectManager
 			return;
 		}
 
-		Remove(MyPlayer.id);
+		Remove(MyPlayer.Id);
 		MyPlayer = null;
 	}
 
@@ -90,6 +93,10 @@ public class ObjectManager
 
 	public void Clear()
 	{
-		_objects.Clear();
+		foreach (GameObject obj in _objects.Values)
+		{ 
+			Managers.Resource.Destroy(obj);
+		}
+        _objects.Clear();
 	}
 }
