@@ -67,7 +67,28 @@ public class UnityPacketHandler : AutoServerPacketHandler
 
     }
 
- 
+    public override void Handle_S_SKILL(PacketSession session, IMessage packet)
+    {
+        var pkt = packet as S_SKILL;
+
+        var go = Managers.Object.FindById(pkt.AccountUID);
+
+        if (go == null)
+        {
+            return;
+        }
+        var pc = go.GetComponent<PlayerController>();
+        
+        if (pc == null)
+        {
+            return;
+        }
+
+        pc.UseSkill(pkt.Info.SkillID);
+
+    }
+
+
 
     #endregion
 }

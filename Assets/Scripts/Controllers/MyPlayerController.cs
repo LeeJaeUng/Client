@@ -36,12 +36,29 @@ public class MyPlayerController : PlayerController
         }
 
         // 스킬 상태로 갈지 확인
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && _coSkillCoolTime == null)
         {
-            State = CreatureState.Skill;
-            //_coSkill = StartCoroutine("CoStartPunch");
-            _coSkill = StartCoroutine("CoStartShootArrow");
+            Debug.Log("Skill !!");
+
+            C_SKILL skill = new C_SKILL()
+            {
+                Info = new SkillInfo()
+                {
+                    SkillID = 1
+                }
+            };
+
+            Managers.Network.Send(skill);
+
+            _coSkillCoolTime = StartCoroutine(CoInputCoolTime(0.5f));
+
         }
+    }
+    Coroutine _coSkillCoolTime;
+    IEnumerator CoInputCoolTime(float time)
+    { 
+        yield return new WaitForSeconds(time);
+        _coSkillCoolTime = null;
     }
 
     void LateUpdate()
@@ -112,7 +129,7 @@ public class MyPlayerController : PlayerController
         CheckUpdatedFlag();
     }
 
-    void CheckUpdatedFlag()
+    protected override void CheckUpdatedFlag()
     {
         if (_updated)
         {
