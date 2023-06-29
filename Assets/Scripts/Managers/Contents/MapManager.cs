@@ -56,7 +56,7 @@ public class MapManager
 	{
 		DestroyMap();
 
-		string mapName = "Map_" + mapId.ToString("000");
+		string mapName = "DungeonMap_" + mapId.ToString("000");
 		GameObject go = Managers.Resource.Instantiate($"Map/{mapName}");
 		go.name = "Map";
 
