@@ -853,7 +853,7 @@ namespace Protocol {
 
     /// <summary>Field number for the "moveDir" field.</summary>
     public const int MoveDirFieldNumber = 2;
-    private global::Protocol.MoveDir moveDir_ = global::Protocol.MoveDir.None;
+    private global::Protocol.MoveDir moveDir_ = global::Protocol.MoveDir.Up;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Protocol.MoveDir MoveDir {
       get { return moveDir_; }
@@ -908,7 +908,7 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (State != global::Protocol.CreatureState.Idle) hash ^= State.GetHashCode();
-      if (MoveDir != global::Protocol.MoveDir.None) hash ^= MoveDir.GetHashCode();
+      if (MoveDir != global::Protocol.MoveDir.Up) hash ^= MoveDir.GetHashCode();
       if (PosX != 0) hash ^= PosX.GetHashCode();
       if (PosY != 0) hash ^= PosY.GetHashCode();
       if (_unknownFields != null) {
@@ -931,7 +931,7 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteEnum((int) State);
       }
-      if (MoveDir != global::Protocol.MoveDir.None) {
+      if (MoveDir != global::Protocol.MoveDir.Up) {
         output.WriteRawTag(16);
         output.WriteEnum((int) MoveDir);
       }
@@ -956,7 +956,7 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteEnum((int) State);
       }
-      if (MoveDir != global::Protocol.MoveDir.None) {
+      if (MoveDir != global::Protocol.MoveDir.Up) {
         output.WriteRawTag(16);
         output.WriteEnum((int) MoveDir);
       }
@@ -980,7 +980,7 @@ namespace Protocol {
       if (State != global::Protocol.CreatureState.Idle) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
-      if (MoveDir != global::Protocol.MoveDir.None) {
+      if (MoveDir != global::Protocol.MoveDir.Up) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MoveDir);
       }
       if (PosX != 0) {
@@ -1003,7 +1003,7 @@ namespace Protocol {
       if (other.State != global::Protocol.CreatureState.Idle) {
         State = other.State;
       }
-      if (other.MoveDir != global::Protocol.MoveDir.None) {
+      if (other.MoveDir != global::Protocol.MoveDir.Up) {
         MoveDir = other.MoveDir;
       }
       if (other.PosX != 0) {

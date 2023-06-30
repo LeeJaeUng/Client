@@ -30,9 +30,9 @@ namespace Protocol {
             "UEVfQVBQTEUQBCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlFUl9UWVBFX05PTkUQ",
             "ABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZRVJfVFlQRV9NQUdF",
             "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEAMqOgoNQ3JlYXR1cmVTdGF0ZRII",
-            "CgRJZGxlEAASCgoGTW92aW5nEAESCQoFU2tpbGwQAhIICgREZWFkEAMqOgoH",
-            "TW92ZURpchIICgROb25lEAASBgoCVXAQARIICgREb3duEAISCAoETGVmdBAD",
-            "EgkKBVJpZ2h0EARiBnByb3RvMw=="));
+            "CgRJZGxlEAASCgoGTW92aW5nEAESCQoFU2tpbGwQAhIICgREZWFkEAMqMAoH",
+            "TW92ZURpchIGCgJVcBAAEggKBERvd24QARIICgRMZWZ0EAISCQoFUmlnaHQQ",
+            "A2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), }, null, null));
@@ -64,11 +64,10 @@ namespace Protocol {
   }
 
   public enum MoveDir {
-    [pbr::OriginalName("None")] None = 0,
-    [pbr::OriginalName("Up")] Up = 1,
-    [pbr::OriginalName("Down")] Down = 2,
-    [pbr::OriginalName("Left")] Left = 3,
-    [pbr::OriginalName("Right")] Right = 4,
+    [pbr::OriginalName("Up")] Up = 0,
+    [pbr::OriginalName("Down")] Down = 1,
+    [pbr::OriginalName("Left")] Left = 2,
+    [pbr::OriginalName("Right")] Right = 3,
   }
 
   #endregion
