@@ -32,10 +32,11 @@ namespace Protocol {
             "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEAMqOgoNQ3JlYXR1cmVTdGF0ZRII",
             "CgRJZGxlEAASCgoGTW92aW5nEAESCQoFU2tpbGwQAhIICgREZWFkEAMqMAoH",
             "TW92ZURpchIGCgJVcBAAEggKBERvd24QARIICgRMZWZ0EAISCQoFUmlnaHQQ",
-            "A2IGcHJvdG8z"));
+            "AypDCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCwoH",
+            "TW9uc3RlchACEg4KClByb2plY3RpbGUQA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), typeof(global::Protocol.GameObjectType), }, null, null));
     }
     #endregion
 
@@ -68,6 +69,13 @@ namespace Protocol {
     [pbr::OriginalName("Down")] Down = 1,
     [pbr::OriginalName("Left")] Left = 2,
     [pbr::OriginalName("Right")] Right = 3,
+  }
+
+  public enum GameObjectType {
+    [pbr::OriginalName("None")] None = 0,
+    [pbr::OriginalName("Player")] Player = 1,
+    [pbr::OriginalName("Monster")] Monster = 2,
+    [pbr::OriginalName("Projectile")] Projectile = 3,
   }
 
   #endregion

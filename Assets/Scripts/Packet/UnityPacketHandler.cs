@@ -15,7 +15,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
     public override void Handle_S_ENTER_GAME(PacketSession session, IMessage packet)
     {
         var pkt = packet as S_ENTER_GAME;
-        Managers.Object.Add(pkt.PlayerInfo, true);
+        Managers.Object.Add(pkt.ObjectInfo, true);
     }
 
     public override void Handle_S_LEAVE_GAME(PacketSession session, IMessage packet)
@@ -23,13 +23,13 @@ public class UnityPacketHandler : AutoServerPacketHandler
         var pkt = packet as S_LEAVE_GAME;
         Managers.Object.RemoveMyPlayer();
     }
-    public override void Handle_S_SPAWN_PLAYER(PacketSession session, IMessage packet)
+    public override void Handle_S_SPAWN(PacketSession session, IMessage packet)
     {
-        var pkt = packet as S_SPAWN_PLAYER;
+        var pkt = packet as S_SPAWN;
 
-        foreach(var player in pkt.PlayerInfos)
+        foreach(var obj in pkt.Objects)
         {
-            Managers.Object.Add(player, myPlayer: false);
+            Managers.Object.Add(obj, myPlayer: false);
         }
 
 
@@ -38,7 +38,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
     {
         var pkt = packet as S_DESPAWN;
 
-        foreach (var id in pkt.AccountUIDs)
+        foreach (var id in pkt.ObjectIDs)
         {
             Managers.Object.Remove(id);
         }
@@ -50,7 +50,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
     {
         var pkt = packet as S_MOVE;
 
-        var go = Managers.Object.FindById(pkt.AccountUID);
+        var go = Managers.Object.FindById(pkt.ObjectID);
 
         if (go == null)
         {
@@ -71,7 +71,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
     {
         var pkt = packet as S_SKILL;
 
-        var go = Managers.Object.FindById(pkt.AccountUID);
+        var go = Managers.Object.FindById(pkt.ObjectID);
 
         if (go == null)
         {

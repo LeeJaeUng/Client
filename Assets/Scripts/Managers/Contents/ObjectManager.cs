@@ -9,42 +9,62 @@ public class ObjectManager
 {
 	public MyPlayerController MyPlayer { get; set; }
 	Dictionary<uint, GameObject> _objects = new Dictionary<uint, GameObject>();
-
-	public void Add(PlayerInfo info, bool myPlayer = false)
+	public static GameObjectType GetObjectTypeById(uint id)
 	{
-		if (myPlayer == true)
-		{
-			var go =Managers.Resource.Instantiate("Creature/MyPlayer");
-			go.name = info.AccountData.NickName;
-			_objects.Add(info.AccountData.AccountUID, go);
-
-			MyPlayer = go.GetComponent<MyPlayerController>();
-			MyPlayer.Id = info.AccountData.AccountUID;
-			MyPlayer.PosInfo = info.PositionInfo;
-			MyPlayer.SyncPos();
-
-        }
-		else
-		{ 
-			var go = Managers.Resource.Instantiate("Creature/Player");
-			go.name = info.AccountData.NickName;
-            _objects.Add(info.AccountData.AccountUID, go);
-
-			var pc = go.GetComponent<PlayerController>();
-			pc.Id = info.AccountData.AccountUID;
-            pc.PosInfo = info.PositionInfo;
-			pc.SyncPos();
-        }
+        uint type = (id >> 24) & 0x7F;
+		return (GameObjectType)type;
 	}
 
+	public void Add(ObjectInfo info, bool myPlayer = false)
+	{
+		GameObjectType objectType = GetObjectTypeById(info.ObjectID);
+		if (objectType == GameObjectType.Player)
+		{
+			if (myPlayer)
+			{
+				GameObject go = Managers.Resource.Instantiate("Creature/MyPlayer");
+				go.name = info.Name;
+				_objects.Add(info.ObjectID, go);
+
+				MyPlayer = go.GetComponent<MyPlayerController>();
+				MyPlayer.Id = info.ObjectID;
+				MyPlayer.PosInfo = info.PositionInfo;
+				MyPlayer.SyncPos();
+			}
+			else
+			{
+				GameObject go = Managers.Resource.Instantiate("Creature/Player");
+				go.name = info.Name;
+				_objects.Add(info.ObjectID, go);
+
+				PlayerController pc = go.GetComponent<PlayerController>();
+				pc.Id = info.ObjectID;
+				pc.PosInfo = info.PositionInfo;
+				pc.SyncPos();
+			}
+		}
+		else if (objectType == GameObjectType.Monster)
+		{
+
+		}
+		else if (objectType == GameObjectType.Projectile)
+		{
+			GameObject go = Managers.Resource.Instantiate("Creature/Arrow");
+			go.name = "Arrow";
+			_objects.Add(info.ObjectID, go);
+
+			ArrowController ac = go.GetComponent<ArrowController>();
+			ac.Dir = info.PositionInfo.MoveDir;
+			ac.CellPos = new Vector3Int(info.PositionInfo.PosX, info.PositionInfo.PosY, 0);
+			ac.SyncPos();
+		}
+	}
 
 	public void Remove(uint id)
 	{
-		var go = FindById(id);
-		if(go == null)
-		{
-            return;
-        }
+		GameObject go = FindById(id);
+		if (go == null)
+			return;
 
 		_objects.Remove(id);
 		Managers.Resource.Destroy(go);
@@ -63,11 +83,11 @@ public class ObjectManager
 
 	public GameObject FindById(uint id)
 	{
-		_objects.TryGetValue((uint)id, out var go);
+		_objects.TryGetValue(id, out var go);
 		return go;
 	}
 
-	public GameObject Find(Vector3 cellPos)
+	public GameObject Find(Vector3Int cellPos)
 	{
 		foreach (GameObject obj in _objects.Values)
 		{
