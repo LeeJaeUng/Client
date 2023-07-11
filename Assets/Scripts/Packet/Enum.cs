@@ -24,58 +24,69 @@ namespace Protocol {
     static EnumReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgpFbnVtLnByb3RvEghQcm90b2NvbCp5CghBdXRoVHlwZRISCg5BVVRIX1RZ",
-            "UEVfTk9ORRAAEhYKEkFVVEhfVFlQRV9XT09OR0xFRRABEhQKEEFVVEhfVFlQ",
-            "RV9HT09HTEUQAhIWChJBVVRIX1RZUEVfRkFDRUJPT0sQAxITCg9BVVRIX1RZ",
-            "UEVfQVBQTEUQBCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlFUl9UWVBFX05PTkUQ",
-            "ABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZRVJfVFlQRV9NQUdF",
-            "EAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEAMqOgoNQ3JlYXR1cmVTdGF0ZRII",
-            "CgRJZGxlEAASCgoGTW92aW5nEAESCQoFU2tpbGwQAhIICgREZWFkEAMqMAoH",
-            "TW92ZURpchIGCgJVcBAAEggKBERvd24QARIICgRMZWZ0EAISCQoFUmlnaHQQ",
-            "AypDCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCwoH",
-            "TW9uc3RlchACEg4KClByb2plY3RpbGUQA2IGcHJvdG8z"));
+            "CgpFbnVtLnByb3RvEghQcm90b2NvbCp0CghBdXRoVHlwZRIRCg1BdXRoVHlw",
+            "ZV9Ob25lEAASFQoRQXV0aFR5cGVfV29vbmdMZWUQARITCg9BdXRoVHlwZV9H",
+            "b29nbGUQAhIVChFBdXRoVHlwZV9GYWNlYm9vaxADEhIKDkF1dGhUeXBlX0Fw",
+            "cGxlEAQqZAoKUGxheWVyVHlwZRITCg9QbGF5ZXJUeXBlX05vbmUQABIVChFQ",
+            "bGF5ZXJUeXBlX0tuaWdodBABEhMKD1BsYXllclR5cGVfTWFnZRACEhUKEVBs",
+            "YXllclR5cGVfQXJjaGVyEAMqcgoNQ3JlYXR1cmVTdGF0ZRIWChJDcmVhdHVy",
+            "ZVN0YXRlX0lkbGUQABIYChRDcmVhdHVyZVN0YXRlX01vdmluZxABEhcKE0Ny",
+            "ZWF0dXJlU3RhdGVfU2tpbGwQAhIWChJDcmVhdHVyZVN0YXRlX0RlYWQQAypQ",
+            "CgdNb3ZlRGlyEg4KCk1vdmVEaXJfVXAQABIQCgxNb3ZlRGlyX0Rvd24QARIQ",
+            "CgxNb3ZlRGlyX0xlZnQQAhIRCg1Nb3ZlRGlyX1JpZ2h0EAMqfwoOR2FtZU9i",
+            "amVjdFR5cGUSFwoTR2FtZU9iamVjdFR5cGVfTm9uZRAAEhkKFUdhbWVPYmpl",
+            "Y3RUeXBlX1BsYXllchABEhoKFkdhbWVPYmplY3RUeXBlX01vbnN0ZXIQAhId",
+            "ChlHYW1lT2JqZWN0VHlwZV9Qcm9qZWN0aWxlEAMqTQoJU2tpbGxUeXBlEhIK",
+            "DlNraWxsVHlwZV9Ob25lEAASEgoOU2tpbGxUeXBlX0F1dG8QARIYChRTa2ls",
+            "bFR5cGVfUHJvamVjdGlsZRACYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), typeof(global::Protocol.GameObjectType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.AuthType), typeof(global::Protocol.PlayerType), typeof(global::Protocol.CreatureState), typeof(global::Protocol.MoveDir), typeof(global::Protocol.GameObjectType), typeof(global::Protocol.SkillType), }, null, null));
     }
     #endregion
 
   }
   #region Enums
   public enum AuthType {
-    [pbr::OriginalName("AUTH_TYPE_NONE")] None = 0,
-    [pbr::OriginalName("AUTH_TYPE_WOONGLEE")] Woonglee = 1,
-    [pbr::OriginalName("AUTH_TYPE_GOOGLE")] Google = 2,
-    [pbr::OriginalName("AUTH_TYPE_FACEBOOK")] Facebook = 3,
-    [pbr::OriginalName("AUTH_TYPE_APPLE")] Apple = 4,
+    [pbr::OriginalName("AuthType_None")] None = 0,
+    [pbr::OriginalName("AuthType_WoongLee")] WoongLee = 1,
+    [pbr::OriginalName("AuthType_Google")] Google = 2,
+    [pbr::OriginalName("AuthType_Facebook")] Facebook = 3,
+    [pbr::OriginalName("AuthType_Apple")] Apple = 4,
   }
 
   public enum PlayerType {
-    [pbr::OriginalName("PLAYER_TYPE_NONE")] None = 0,
-    [pbr::OriginalName("PLAYER_TYPE_KNIGHT")] Knight = 1,
-    [pbr::OriginalName("PLAYER_TYPE_MAGE")] Mage = 2,
-    [pbr::OriginalName("PLAYER_TYPE_ARCHER")] Archer = 3,
+    [pbr::OriginalName("PlayerType_None")] None = 0,
+    [pbr::OriginalName("PlayerType_Knight")] Knight = 1,
+    [pbr::OriginalName("PlayerType_Mage")] Mage = 2,
+    [pbr::OriginalName("PlayerType_Archer")] Archer = 3,
   }
 
   public enum CreatureState {
-    [pbr::OriginalName("Idle")] Idle = 0,
-    [pbr::OriginalName("Moving")] Moving = 1,
-    [pbr::OriginalName("Skill")] Skill = 2,
-    [pbr::OriginalName("Dead")] Dead = 3,
+    [pbr::OriginalName("CreatureState_Idle")] Idle = 0,
+    [pbr::OriginalName("CreatureState_Moving")] Moving = 1,
+    [pbr::OriginalName("CreatureState_Skill")] Skill = 2,
+    [pbr::OriginalName("CreatureState_Dead")] Dead = 3,
   }
 
   public enum MoveDir {
-    [pbr::OriginalName("Up")] Up = 0,
-    [pbr::OriginalName("Down")] Down = 1,
-    [pbr::OriginalName("Left")] Left = 2,
-    [pbr::OriginalName("Right")] Right = 3,
+    [pbr::OriginalName("MoveDir_Up")] Up = 0,
+    [pbr::OriginalName("MoveDir_Down")] Down = 1,
+    [pbr::OriginalName("MoveDir_Left")] Left = 2,
+    [pbr::OriginalName("MoveDir_Right")] Right = 3,
   }
 
   public enum GameObjectType {
-    [pbr::OriginalName("None")] None = 0,
-    [pbr::OriginalName("Player")] Player = 1,
-    [pbr::OriginalName("Monster")] Monster = 2,
-    [pbr::OriginalName("Projectile")] Projectile = 3,
+    [pbr::OriginalName("GameObjectType_None")] None = 0,
+    [pbr::OriginalName("GameObjectType_Player")] Player = 1,
+    [pbr::OriginalName("GameObjectType_Monster")] Monster = 2,
+    [pbr::OriginalName("GameObjectType_Projectile")] Projectile = 3,
+  }
+
+  public enum SkillType {
+    [pbr::OriginalName("SkillType_None")] None = 0,
+    [pbr::OriginalName("SkillType_Auto")] Auto = 1,
+    [pbr::OriginalName("SkillType_Projectile")] Projectile = 2,
   }
 
   #endregion

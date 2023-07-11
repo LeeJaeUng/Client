@@ -13,8 +13,9 @@ public abstract class AutoServerPacketHandler
 		PKT_S_DESPAWN = 1003,
 		PKT_S_MOVE = 1004,
 		PKT_S_SKILL = 1005,
-		PKT_C_MOVE = 1006,
-		PKT_C_SKILL = 1007,
+		PKT_S_CHANGE_HP = 1006,
+		PKT_C_MOVE = 1007,
+		PKT_C_SKILL = 1008,
 	}
 
 	public AutoServerPacketHandler()
@@ -32,6 +33,7 @@ public abstract class AutoServerPacketHandler
 	public abstract void Handle_S_DESPAWN(PacketSession session, IMessage packet);
 	public abstract void Handle_S_MOVE(PacketSession session, IMessage packet);
 	public abstract void Handle_S_SKILL(PacketSession session, IMessage packet);
+	public abstract void Handle_S_CHANGE_HP(PacketSession session, IMessage packet);
 		
 	public void Register()
 	{
@@ -41,12 +43,14 @@ public abstract class AutoServerPacketHandler
 		_onRecv.Add((ushort)MsgId.PKT_S_DESPAWN, MakePacket<Protocol.S_DESPAWN>);
 		_onRecv.Add((ushort)MsgId.PKT_S_MOVE, MakePacket<Protocol.S_MOVE>);
 		_onRecv.Add((ushort)MsgId.PKT_S_SKILL, MakePacket<Protocol.S_SKILL>);
+		_onRecv.Add((ushort)MsgId.PKT_S_CHANGE_HP, MakePacket<Protocol.S_CHANGE_HP>);
 		_handler.Add((ushort)MsgId.PKT_S_ENTER_GAME, Handle_S_ENTER_GAME);
 		_handler.Add((ushort)MsgId.PKT_S_LEAVE_GAME, Handle_S_LEAVE_GAME);
 		_handler.Add((ushort)MsgId.PKT_S_SPAWN, Handle_S_SPAWN);
 		_handler.Add((ushort)MsgId.PKT_S_DESPAWN, Handle_S_DESPAWN);
 		_handler.Add((ushort)MsgId.PKT_S_MOVE, Handle_S_MOVE);
 		_handler.Add((ushort)MsgId.PKT_S_SKILL, Handle_S_SKILL);
+		_handler.Add((ushort)MsgId.PKT_S_CHANGE_HP, Handle_S_CHANGE_HP);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

@@ -88,6 +88,32 @@ public class UnityPacketHandler : AutoServerPacketHandler
 
     }
 
+    public override void Handle_S_CHANGE_HP(PacketSession session, IMessage packet)
+    {
+        
+        var pkt = packet as S_CHANGE_HP;
+
+        var go = Managers.Object.FindById(pkt.ObjectID);
+
+        if (go == null)
+        {
+            return;
+        }
+        var cc = go.GetComponent<CreatureController>();
+
+        if (cc == null)
+        {
+            return;
+        }
+
+        cc.Stat.Hp = pkt.Hp;
+
+        //TODO : UI
+
+        Debug.Log($"HP : {pkt.Hp}");
+
+    }
+
 
 
     #endregion
