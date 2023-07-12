@@ -106,11 +106,8 @@ public class UnityPacketHandler : AutoServerPacketHandler
             return;
         }
 
-        cc.Stat.Hp = pkt.Hp;
+        cc.Hp = pkt.Hp;
 
-        //TODO : UI
-
-        Debug.Log($"HP : {pkt.Hp}");
 
     }
 

@@ -62,7 +62,9 @@ public class MonsterController : CreatureController
 			_skillRange = 10.0f;
 		else
 			_skillRange = 1.0f;
-	}
+
+        AddHpBar();
+    }
 
 	protected override void UpdateIdle()
 	{
