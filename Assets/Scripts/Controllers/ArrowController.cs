@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿using Protocol;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Protocol;
 using static Define;
 
-public class ArrowController : CreatureController
+public class ArrowController : BaseController
 {
-
 	protected override void Init()
 	{
 		switch (Dir)
@@ -34,5 +33,4 @@ public class ArrowController : CreatureController
 	{
 
 	}
-	
 }

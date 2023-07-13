@@ -21,7 +21,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
     public override void Handle_S_LEAVE_GAME(PacketSession session, IMessage packet)
     {
         var pkt = packet as S_LEAVE_GAME;
-        Managers.Object.RemoveMyPlayer();
+        Managers.Object.Clear();
     }
     public override void Handle_S_SPAWN(PacketSession session, IMessage packet)
     {
@@ -57,7 +57,7 @@ public class UnityPacketHandler : AutoServerPacketHandler
             return;
         }
 
-        var cc = go.GetComponent<CreatureController>();
+        var cc = go.GetComponent<BaseController>();
         if(cc== null)
         {
             return;
@@ -109,6 +109,11 @@ public class UnityPacketHandler : AutoServerPacketHandler
         cc.Hp = pkt.Hp;
 
 
+    }
+
+    public override void Handle_S_DIE(PacketSession session, IMessage packet)
+    {
+        
     }
 
 
