@@ -1,4 +1,5 @@
 ﻿using Protocol;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
@@ -77,5 +78,10 @@ public class CreatureController : BaseController
 		effect.transform.position = transform.position;
 		effect.GetComponent<Animator>().Play("START");
 		GameObject.Destroy(effect, 0.5f);
+	}
+
+	public virtual void UseSkill(Int32 skillID)
+	{ 
+	
 	}
 }

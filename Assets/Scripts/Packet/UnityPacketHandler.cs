@@ -77,14 +77,14 @@ public class UnityPacketHandler : AutoServerPacketHandler
         {
             return;
         }
-        var pc = go.GetComponent<PlayerController>();
+        var cc = go.GetComponent<CreatureController>();
         
-        if (pc == null)
+        if (cc == null)
         {
             return;
         }
 
-        pc.UseSkill(pkt.Info.SkillID);
+        cc.UseSkill(pkt.Info.SkillID);
 
     }
 
